@@ -1,5 +1,6 @@
 __author__ = 'alemaxona'
 
+
 from datetime import date
 from app import db
 
@@ -21,7 +22,7 @@ class Comment(db.Model):
     __tablename__ = 'comment'
     
     id = db.Column(db.Integer, nullable=False, autoincrement=True, primary_key=True)
-    article_id = db.Column(db.Integer, db.ForeignKey('article.id'), nullable=False)
+    article_id = db.Column(db.Integer, db.ForeignKey('article.id'), nullable=False, index=True)
     date_create = db.Column(db.Date, default=date.today)
     text = db.Column(db.String(100), nullable=False)
 

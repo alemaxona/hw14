@@ -1,0 +1,16 @@
+{% extends '_Base.txt' %}
+
+
+{% block body %}
+{% for item in posts %}
+    Author - {{ item.author }}
+    
+        Title: {{ item.title }} 
+        Post: {{ item.post }}
+
+{% endfor %}
+{% endblock %}
+
+{% block footer %}
+    Post create date: {{ item.date_create }}
+{% endblock %}

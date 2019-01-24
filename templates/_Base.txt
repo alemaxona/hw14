@@ -1,0 +1,11 @@
+{% block head %}
+    Posts:
+
+{% endblock %}
+
+{% block body %}
+{% endblock %}
+
+{% block footer %}
+    _base template
+{% endblock %}
