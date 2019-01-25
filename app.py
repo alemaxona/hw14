@@ -51,10 +51,13 @@ def comments(post_id):
 
     if request.method == 'GET':
         posts = db.session.query(Article).filter_by(id=post_id)
-        # print('posts', posts)  # ? Может выводиться запрос SQL
-        comments = db.session.query(Comment.text).join(Article).filter(Article.id == Comment.article_id, ).filter_by(id=post_id)
-        # print('comments', comments)
-        return render_template('user_post.txt', posts=posts, comments=comments)
+        if posts.count() == 0:
+            return 'Post not found'
+        else:
+            # print('posts', posts)  # ? Может выводиться запрос SQL
+            comments = db.session.query(Comment.text).join(Article).filter(Article.id == Comment.article_id, ).filter_by(id=post_id)
+            # print('comments', comments)
+            return render_template('user_post.txt', posts=posts, comments=comments)
     else:
         form = CommentForm(request.form)
         if form.validate():
