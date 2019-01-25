@@ -1,6 +1,3 @@
-__author__ = 'alemaxona'
-
-
 from os import urandom
 
 

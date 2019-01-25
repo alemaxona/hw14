@@ -1,6 +1,3 @@
-__author__ = 'alemaxona'
-
-
 from datetime import date
 from app import db
 
