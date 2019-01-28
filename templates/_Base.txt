@@ -1,9 +1,0 @@
-{% block head %}
-    Posts:
-{% endblock %}
-
-{% block body %}
-{% endblock %}
-
-{% block footer %}
-{% endblock %}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+    <title>Posts</title>
+</head>
+<Body>    
+{% extends '_Base.html' %}
+{% block body %}
+{% for item in posts %}
+
+    <p>Author - {{ item.author }}</p>
+        <ul>
+            <li>Title: {{ item.title }}</li>
+            <li>Post: {{ item.post }}</li>
+        
+            <li>Post create date: {{ item.date_create }}</li>
+            <li>Post id: {{ item.id }}</li>
+            <!--<li>Enter comment to this post: http://127.0.0.1:5000/{{ item.id }}</li>-->
+            <a href="http://127.0.0.1:5000/{{ item.id }}"><button>Show post</button></a>
+        </ul>
+{% endfor %}
+{% endblock %}
+</Body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<body>
+{% block head %}
+    <h1>Posts:</h1>
+{% endblock %}
+
+{% block body %}
+{% endblock %}
+</body>
+<footer>
+{% block footer %}
+<h2>Create Posts:</h2>
+    <form name="ArticleForm" method="post" action="http://127.0.0.1:5000/">
+            <p><b>Author</b>
+                <br>
+                <input name="author" type="text" size="20">
+            </p>
+            <p><b>Title</b>
+                <br>
+                <input name="title" type="text" size="20">
+            </p>
+            <p><b>Text</b>
+                <Br>
+            <textarea name="post" size="500" cols="40" rows="3"></textarea></p>
+            <p><input type="submit" value="Enter"></p>
+    </form>
+{% endblock %}
+</footer>
+</html>

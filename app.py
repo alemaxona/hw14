@@ -28,7 +28,7 @@ def index():
             db.session.commit()
 
             posts = db.session.query(Article).all()
-            return render_template('Article.txt', posts=posts)
+            return render_template('Article.html', posts=posts)
         else:
             return 'Form not valid.'
     else:
@@ -40,7 +40,7 @@ def index():
             #     author = column.author
             #     title = column.title
             #     print(author, title)
-            return render_template('Article.txt', posts=posts)
+            return render_template('Article.html', posts=posts)
 
 
 @app.route('/<post_id>', methods=['GET', 'POST'])
@@ -57,7 +57,7 @@ def comments(post_id):
             # print('posts', posts)  # ? Может выводиться запрос SQL
             comments = db.session.query(Comment.text).join(Article).filter(Article.id == Comment.article_id, ).filter_by(id=post_id)
             # print('comments', comments)
-            return render_template('user_post.txt', posts=posts, comments=comments)
+            return render_template('user_post.html', posts=posts, comments=comments)
     else:
         form = CommentForm(request.form)
         if form.validate():
@@ -68,7 +68,7 @@ def comments(post_id):
                 db.session.commit() 
                 posts = db.session.query(Article).filter_by(id=post_id)
                 comments = db.session.query(Comment.text).join(Article).filter(Article.id == Comment.article_id).filter_by(id=post_id)
-                return render_template('user_post.txt', posts=posts, comments=comments)
+                return render_template('user_post.html', posts=posts, comments=comments)
             else:
                 return 'Post id failed.'
         else:

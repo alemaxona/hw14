@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<body>
+{% extends '_Base.html' %}
+{% block head %}
+{% for item in posts %}
+    <h1>Posts id - {{item.id}}:</h1>
+{% endfor %} 
+{% endblock %}
+{% block body %}
+{% for item in posts %}
+<ul>
+    <h2>Title: {{ item.title }}</h2>
+        
+        <div>Post: {{ item.post }}</div>
+
+        
+        <div>Author - {{ item.author }}</div>
+        <div>Post create date: {{ item.date_create }}</div>
+        <br>
+<ul>
+{% endfor %}
+{% endblock %}
+</body>
+<footer>
+{% block footer %}
+    <h3>Comments:</h3>
+    {% for item in comments %}
+        <li>{{ item.text }}</li><br><br>
+    {% endfor %}
+    
+    {% for item in posts %}
+    <h2>Add comment:</h2>
+    <br>
+    <form name="CommentForm" method="post" action="http://127.0.0.1:5000/{{item.id}}">
+        <p><b>Text</b><Br>
+            <textarea name="text" size="500" cols="40" rows="3"></textarea></p>
+            <input type="hidden" name="article_id" value="{{item.id}}">
+            <p><input type="submit" value="Enter"></p>
+            
+    {% endfor %}
+    </form>
+    <a href="http://127.0.0.1:5000/">Go to posts</a>
+{% endblock %}
+</footer>
+</html>
