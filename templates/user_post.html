@@ -30,8 +30,7 @@
     
     {% for item in posts %}
     <h2>Add comment:</h2>
-    <br>
-    <form name="CommentForm" method="post" action="http://127.0.0.1:5000/{{item.id}}">
+    <form name="Add user comment to post" method="post" action="http://127.0.0.1:5000/{{item.id}}">
         <p><b>Text</b><Br>
             <textarea name="text" size="500" cols="40" rows="3"></textarea></p>
             <input type="hidden" name="article_id" value="{{item.id}}">
