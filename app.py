@@ -44,7 +44,7 @@ def index():
             # posts = db.session.execute("SELECT * FROM article")
             # print('???', posts)
             # ??? <sqlalchemy.engine.result.ResultProxy object at 0x047CB470>
-            db.session.close() 
+            db.session.close()  # На маке и без этого работает! О_о Может постгрес...
             return render_template('Article.html', posts=posts)
 
 
@@ -62,7 +62,11 @@ def comments(post_id):
 
         # posts = db.session.execute("Select * from article where id = :post_id")
         if posts.count() == 0:
-            db.session.close()  # Работает 
+            # на маке:
+            # chrome - Версия 72.0.3626.81 (Официальная сборка), (64 бит) 
+            # postgres - PostgreSQL 11.1 on x86_64-apple-darwin18.2.0, compiled by Apple LLVM version 10.0.0 (clang-1000.11.45.5), 64-bit
+
+            # db.session.close()  # Работает c, а на маке работает без...
             # db.session.remove()  # Тут это работает! O_o Все это блять страннно! Помогите мне, тупому.
             return 'Post not found'
         else:
@@ -71,7 +75,7 @@ def comments(post_id):
             # SELECT comment.id AS comment_id, comment.article_id AS comment_article_id, comment.date_create AS comment_date_create, comment.text AS comment_text
             # FROM comment JOIN article ON article.id = comment.article_id
             # WHERE article.id = comment.article_id AND article.id = %(id_1)s
-            db.session.close()  # Не работает
+            db.session.close()  # Не работает, а на маке работает...
             return render_template('user_post.html', posts=posts, comments=comments)
     else:
         form = CommentForm(request.form)
