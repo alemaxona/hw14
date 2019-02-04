@@ -9,7 +9,7 @@ path_db = 'postgresql://test:test@localhost/test_db'  # Connect to postgresql (p
 
 
 class Configuration():
-    # DEBUG = True
+    DEBUG = True
     SECRET_KEY = key
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     # SQLALCHEMY_DATABASE_URI = 'sqlite:////Users/alemaxona/Documents/Projects/hw14/app/db/hw14.db'  # mac

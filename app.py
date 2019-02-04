@@ -84,12 +84,15 @@ def comments(post_id):
         if form.validate():
             user_comment = Comment(**form.data)
             # print(request.form.get('article_id'))  # Получаем данные воода
-            if request.form.get('article_id') == post_id:
+            if int(request.form.get('article_id')) == post_id:
                 db.session.add(user_comment) 
                 posts = db.session.query(Article).filter_by(id=post_id)
                 comments = db.session.query(Comment.text).join(Article).filter(Article.id == Comment.article_id).filter_by(id=post_id)
                 return render_template('user_post.html', posts=posts, comments=comments)
             else:
+                print(request.form.get('article_id') == post_id)
+                print('!!!!!!!', request.form.get('article_id'))
+                print('!!!!!', post_id)
                 return 'Post id failed.'
         else:
             return 'Form invalid.'
