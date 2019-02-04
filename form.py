@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from wtforms_alchemy import ModelForm
 from model import Article, Comment
 
